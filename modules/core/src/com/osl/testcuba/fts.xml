@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
+    <entities>
+        <entity class="com.osl.testcuba.entity.Cliente">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.Comune">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.Prodotto">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.Magazzino">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.OrdineT">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.OrdineD">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>

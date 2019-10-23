@@ -1,0 +1,56 @@
+@import "../halo/halo";
+
+@mixin MyTheme {
+  @include halo;
+  @include raleway-font;
+
+.responsive-container {
+    &[width-range~="0-900px"] {
+      .group-panel {
+        width: 100% !important;
+      }
+    }
+
+    &[width-range~="901px-"] {
+      .group-panel {
+        width: 50% !important;
+      }
+    }
+  }
+
+}
+
+@mixin raleway-font {
+  font-family: 'Segoe UI' !important;
+  font-size:14px;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+    font-family: 'raleway';
+    src:
+        url('fonts/raleway/Raleway-Regular.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-Thin.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-Bold.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-ExtraBold.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-ExtraLight.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-Heavy.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-Light.ttf?hwgbks') format('truetype'),
+        url('fonts/raleway/Raleway-Medium.ttf?hwgbks') format('truetype'),
+
+        url('fonts/raleway/Raleway-SemiBold.ttf?hwgbks') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="comunesTable"
+        messagesPack="com.osl.testcuba.web.screens.comune">
+    <data readOnly="true">
+        <collection id="comunesDc"
+                    class="com.osl.testcuba.entity.Comune"
+                    view="_local">
+            <loader id="comunesDl">
+                <query>
+                    <![CDATA[select e from testcuba_Comune e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="comunesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="comunesTable"
+                dataLoader="comunesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="comunesTable"
+                    width="100%"
+                    dataContainer="comunesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="nome"/>
+                <column id="provincia"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="comunesTable.create"/>
+                <button id="editBtn" action="comunesTable.edit"/>
+                <button id="removeBtn" action="comunesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

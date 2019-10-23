@@ -1,0 +1,126 @@
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="table"
+        messagesPack="com.osl.testcuba.web.screens.prodotto">
+    <data>
+        <collection id="prodottoesDc"
+                    class="com.osl.testcuba.entity.Prodotto"
+                    view="prodotto-view">
+            <loader id="prodottoesDl">
+                <query>
+                    <![CDATA[select e from testcuba_Prodotto e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="prodottoDc"
+                  class="com.osl.testcuba.entity.Prodotto"
+                  view="prodotto-view_1">
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="save" icon="icons/ok.png" caption="mainMsg://actions.Ok" shortcut="CTRL-ENTER"/>
+        <action id="cancel" icon="icons/cancel.png" caption="mainMsg://actions.Cancel" description="Esc"/>
+    </actions>
+    <dialogMode height="600" width="800"/>
+    <layout>
+        <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
+            <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
+                <filter id="filter" applyTo="table" dataLoader="prodottoesDl">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="table"
+                            width="100%"
+                            dataContainer="prodottoesDc"
+                            presentations="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                        <action id="excel" type="excel"/>
+                        <action id="script" caption="Script" icon="font-icon:ALIGN_LEFT" trackSelection="true"/>
+                    </actions>
+                    <columns>
+                        <column id="codice"/>
+                        <column id="descrizione"/>
+                        <column id="tipoApprovigamento"/>
+                        <column id="importo"/>
+                        <column id="profilo"/>
+                        <column id="latoX"/>
+                        <column id="latoY"/>
+                        <column id="diametro"/>
+                        <column id="magazzinoDef"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="table.create"/>
+                        <button id="editBtn" action="table.edit"/>
+                        <button id="removeBtn" action="table.remove"/>
+                        <button id="excelBtn" action="table.excel"/>
+                        <button id="scriptBtn" action="table.script"/>
+                    </buttonsPanel>
+                </groupTable>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="editBox" height="100%" margin="false,false,false,true" expand="tabSheetDati" spacing="true">
+                <tabSheet id="tabSheetDati" stylename="framed">
+                    <tab id="tabGenerale" caption="Generale" margin="true">
+
+                        <scrollBox id="scroll1" orientation="horizontal" contentMinWidth="800px" contentWidth="100%" width="100%"
+                                   scrollBars="horizontal" margin="true">
+                            <vbox>
+                                <label id="labelDescTabGen" value="msg://labelGenerale" stylename="h1" align="MIDDLE_CENTER"/>
+                                <label/>
+                                <form id="form" dataContainer="prodottoDc" width="100%">
+
+                                    <column width="20%">
+                                        <textField id="codiceField" property="codice" width="100%"/>
+                                        <textField id="descrizioneField" property="descrizione" width="100%"/>
+                                        <lookupField id="tipoApprovigamentoField" property="tipoApprovigamento" width="100%" contextHelpText="msg://helpEnum"/>
+                                    </column>
+                                    <column width="80%">
+                                        <textField id="importoField" property="importo" width="100%"/>
+                                        <pickerField id="magazzinoDefField" description="Magazzino Default" property="magazzinoDef" width="100%">
+                                            <actions>
+                                                <action id="lookup" type="picker_lookup"/>
+                                                <action id="clear" type="picker_clear"/>
+                                            </actions>
+                                        </pickerField>
+                                    </column>
+                                </form>
+                            </vbox>
+
+                        </scrollBox>
+                    </tab>
+                    <tab id="tabTecnico" caption="Tecnico">
+                        <label id="labelCommento" value="Tab reativo cambio layout da 0-900px" stylename="h1" align="MIDDLE_CENTER"/>
+                        <cssLayout responsive="true" stylename="responsive-container" width="100%">
+                            <vbox margin="true" spacing="true" stylename="group-panel">
+                                <lookupField id="profiloField" caption="Profilo" property="profilo" width="100%"
+                                             contextHelpText="msg://helpEnum"/>
+                                <textField id="latoXField" caption="Lato X" property="latoX" width="100%"/>
+                            </vbox>
+                            <vbox margin="true" spacing="true" stylename="group-panel">
+                                <textField id="latoYField" caption="Lato Y" property="latoY" width="100%"/>
+                                <textField id="diametroField" caption="Diametro" property="diametro" width="100%"/>
+                            </vbox>
+                        </cssLayout>
+                    </tab>
+                    <tab id="tabOrdini" caption="Ordini">
+
+                    </tab>
+
+                </tabSheet>
+
+                <hbox id="actionsPane" spacing="true" visible="false">
+                    <button id="saveBtn" action="save"/>
+                    <button id="cancelBtn" action="cancel"/>
+                </hbox>
+            </vbox>
+        </split>
+    </layout>
+</window>

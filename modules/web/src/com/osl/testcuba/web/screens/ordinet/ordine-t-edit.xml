@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.osl.testcuba.web.screens.ordinet">
+    <data>
+        <instance id="ordineTDc"
+                  class="com.osl.testcuba.entity.OrdineT"
+                  view="ordineT-view">
+            <loader/>
+            <collection id="dettagliOrdineCollection" property="dettagli"/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="ordineTDc">
+            <column>
+                <textField id="numeroField" property="numero"/>
+                <textField id="annoField" property="anno"/>
+                <lookupPickerField id="clienteField" property="cliente">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </lookupPickerField>
+            </column>
+        </form>
+        <groupBox caption="Dettagli" width="AUTO" stylename="light">
+
+            <groupTable id="dettagliOrdine" dataContainer="dettagliOrdineCollection" height="AUTO">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="prodotto"/>
+                    <column id="prezzo"/>
+                    <column id="quantita"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="dettagliOrdine.create"/>
+                    <button action="dettagliOrdine.edit"/>
+                    <button action="dettagliOrdine.remove"/>
+                </buttonsPanel>
+
+            </groupTable>
+        </groupBox>
+        <hbox id="editActions" align="BOTTOM_CENTER" spacing="true" >
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

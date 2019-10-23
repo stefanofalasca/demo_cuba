@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.osl.testcuba.web.screens.Script">
+    <dialogMode width="800" height="600"/>
+    <layout>
+        <sourceCodeEditor id="sourceEdit" width="100%"  mode="Groovy" caption="Script" height="180%"/>
+        <hbox spacing="true" align="BOTTOM_RIGHT">
+            <button id="confermaBtn" icon="OK" caption="Run" width="100" invoke="onConfermaBtnClick"/>
+            <button id="annullaBtn" icon="CANCEL" caption="Annulla" width="100" invoke="onAnnullaBtnClick"/>
+        </hbox>
+    </layout>
+</window>

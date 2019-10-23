@@ -1,0 +1,28 @@
+@import "../halo/halo-defaults";
+
+$v-font-family: raleway, Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+$cuba-default-menubar-background: #0747a6;
+$cuba-menubar-text-color: #d9f3ff;
+
+$v-selection-color: #296ca3;
+$v-selection-item-border-radius: 0;
+$v-selection-item-height: $v-unit-size;
+$v-selection-item-selection-color: #ebecf0;
+$v-selection-overlay-padding-vertical: 0;
+$v-selection-overlay-padding-horizontal: 0;
+
+$cuba-table-aggregation-background-color: #e8e8e8;
+
+.my-background {
+  background-image: url(http://www.osl.it/wp-content/uploads/2017/02/Logo-GP90NEXT-202.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+$cuba-button-font-weight: 400;
+$v-gradient: none;
+$cuba-highlight-primary-action: true;
+$cuba-table-highlight-hover-row:true;
+

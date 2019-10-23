@@ -1,0 +1,6 @@
+@import "MyTheme-defaults";
+@import "MyTheme";
+
+.MyTheme {
+  @include MyTheme;
+}

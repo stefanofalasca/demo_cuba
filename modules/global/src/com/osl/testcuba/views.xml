@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="testcuba_Cliente" name="cliente-view" extends="_local">
+        <property name="comune" view="_minimal"/>
+    </view>
+    <view entity="testcuba_Cliente" name="cliente-view_1" extends="_local">
+        <property name="comune" view="_minimal"/>
+    </view>
+    <view entity="testcuba_Prodotto" name="prodotto-view" extends="_local">
+        <property name="magazzinoDef" view="_minimal"/>
+    </view>
+    <view entity="testcuba_Prodotto" name="prodotto-view_1" extends="_local">
+        <property name="magazzinoDef" view="_minimal"/>
+    </view>
+    <view entity="testcuba_OrdineT" name="ordineT-view" extends="_local">
+        <property name="dettagli" view="ordineD-view"/>
+        <property name="cliente" view="_minimal"/>
+    </view>
+    <view entity="testcuba_OrdineD" name="ordineD-view" extends="_local">
+        <property name="prodotto" view="_minimal"/>
+    </view>
+</views>
