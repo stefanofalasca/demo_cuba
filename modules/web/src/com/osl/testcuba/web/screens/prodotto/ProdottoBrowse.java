@@ -2,6 +2,7 @@ package com.osl.testcuba.web.screens.prodotto;
 
 import com.haulmont.cuba.gui.Screens;
 import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.Component;
 import com.haulmont.cuba.gui.components.GroupTable;
 import com.haulmont.cuba.gui.screen.*;
 import com.osl.testcuba.entity.Prodotto;
@@ -25,4 +26,5 @@ public class ProdottoBrowse extends MasterDetailScreen<Prodotto> {
         groovyScreen.prodotto = table.getSingleSelected();
         screens.show(groovyScreen);
     }
+
 }

@@ -4,7 +4,7 @@
     <layout expand="foldersSplit">
         <hbox id="titleBar"
               stylename="c-app-menubar"
-              expand="mainMenu"
+              expand="space"
               width="100%"
               spacing="true"
               margin="false;false;false;true">
@@ -12,28 +12,41 @@
                    align="MIDDLE_LEFT"
                    scaleMode="SCALE_DOWN"
                    stylename="c-app-icon"/>
+
             <menu id="mainMenu"
-                  align="MIDDLE_LEFT"/>
-            <ftsField id="ftsField"
-                      align="MIDDLE_LEFT"/>
-            <userIndicator id="userIndicator"
-                           align="MIDDLE_LEFT" visible="false"/>
-            <image height="32" align="MIDDLE_CENTER" scaleMode="FILL">
+                  align="MIDDLE_LEFT" />
+            <ftsField id="ftsField"/>
+
+            <hbox id="customToolbar" align="TOP_LEFT">
+                <button width="24px" icon="BAR_CHART" stylename="borderless-colored" align="TOP_LEFT"/>
+                <button width="24px" icon="ARROW_CIRCLE_DOWN"  stylename="borderless-colored" align="TOP_LEFT"/>
+                <button width="24px" icon="BANDCAMP"  stylename="borderless-colored" align="TOP_LEFT"/>
+            </hbox>
+            <label id="space"/>
+
+
+
+            <image height="20" align="MIDDLE_CENTER" scaleMode="FILL">
+                <url url="https://img.icons8.com/ultraviolet/2x/new-message.png"/>
+            </image>
+            <image height="24" align="MIDDLE_CENTER" scaleMode="FILL">
                 <url url="https://st3.depositphotos.com/3037725/14198/v/1600/depositphotos_141982124-stock-illustration-faces-avatar-in-circle-portrait.jpg"/>
             </image>
             <timeZoneIndicator id="timeZoneIndicator"
-                               align="MIDDLE_LEFT"/>
+                               align="MIDDLE_LEFT" visible="false"/>
             <hbox id="mainButtonsBox"
                   stylename="c-main-buttons"
                   align="MIDDLE_LEFT">
                 <newWindowButton id="newWindowButton"
                                  icon="app/images/new-window.png"
                                  description="mainMsg://newWindowBtnDescription"/>
+
                 <logoutButton id="logoutButton"
                               icon="app/images/exit.png"
                               description="mainMsg://logoutBtnDescription"/>
             </hbox>
         </hbox>
+
         <split id="foldersSplit"
                width="100%"
                orientation="horizontal"
@@ -44,12 +57,18 @@
             <workArea id="workArea"
                       width="100%"
                       height="100%">
+
                 <initialLayout spacing="true" margin="true">
-                    <image align="MIDDLE_CENTER">
-                        <url url="http://www.osl.it/wp-content/uploads/2017/02/Logo-GP90NEXT-202.png"/>
-                    </image>
+                    <vbox align="MIDDLE_CENTER">
+                        <label id="labelInfoDash" value="AREA DASHBOARD" align="MIDDLE_CENTER" stylename="h1"/>
+                        <image align="MIDDLE_CENTER">
+                            <url url="http://www.osl.it/wp-content/uploads/2017/02/Logo-GP90NEXT-202.png"/>
+                        </image>
+                    </vbox>
+
                 </initialLayout>
             </workArea>
         </split>
     </layout>
+
 </window>

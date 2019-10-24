@@ -1,6 +1,9 @@
 package com.osl.testcuba.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -19,20 +22,14 @@ public class OrdineT extends StandardEntity {
     @Column(name = "ANNO", nullable = false)
     protected String anno;
 
-    @OneToMany(mappedBy = "ordine")
-    protected List<OrdineD> dettagli;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENTE_ID")
     protected Cliente cliente;
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "ordine")
+    protected List<OrdineD> dettagli;
 
     public List<OrdineD> getDettagli() {
         return dettagli;
@@ -40,6 +37,14 @@ public class OrdineT extends StandardEntity {
 
     public void setDettagli(List<OrdineD> dettagli) {
         this.dettagli = dettagli;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getAnno() {

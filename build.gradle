@@ -41,9 +41,10 @@ dependencies {
     appComponent('it.nexbit.cuba.translationit:translationit-global:7.1.0')
     appComponent("com.haulmont.fts:fts-global:$cubaVersion")
     appComponent('de.diedavids.cuba.attachable:attachable-global:0.7.0')
+    appComponent("com.haulmont.reports:reports-global:$cubaVersion")
 }
 
-def hsql = 'org.hsqldb:hsqldb:2.4.1'
+def postgres = 'org.postgresql:postgresql:42.2.5'
 
 configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'java')
@@ -89,8 +90,8 @@ configure(coreModule) {
     dependencies {
         compile(globalModule)
         compileOnly(servletApi)
-        jdbc(hsql)
-        testRuntime(hsql)
+        jdbc(postgres)
+        testRuntime(postgres)
     }
 
     task cleanConf(description: 'Cleans up conf directory') {
@@ -110,19 +111,19 @@ configure(coreModule) {
     }
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
-        dbms = 'hsql'
-        host = 'localhost:9010'
-        dbName = 'testcuba-H6DPgQnGg'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbms = 'postgres'
+        host = 'localhost'
+        dbName = 'testcuba'
+        dbUser = 'postgres'
+        dbPassword = 'admin'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
-        dbms = 'hsql'
-        host = 'localhost:9010'
-        dbName = 'testcuba-H6DPgQnGg'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbms = 'postgres'
+        host = 'localhost'
+        dbName = 'testcuba'
+        dbUser = 'postgres'
+        dbPassword = 'admin'
     }
 }
 
@@ -211,7 +212,7 @@ task buildWar(type: CubaWarBuilding) {
     includeContextXml = true
     singleWar = false
     appProperties = ['cuba.automaticDatabaseUpdate': true]
-    appHome = '../app_home'
+    appHome = '../testcuba'
     coreContextXmlPath = 'modules/core/web/META-INF/war-context.xml'
     logbackConfigurationFile = 'etc/war-logback.xml'
 }

@@ -18,6 +18,14 @@
     }
   }
 
+.v-button-borderless-colored {
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: transparent;
+    color: #ffffff;
+}
+
 }
 
 @mixin raleway-font {

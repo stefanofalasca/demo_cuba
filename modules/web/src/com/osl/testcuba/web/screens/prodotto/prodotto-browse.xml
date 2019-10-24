@@ -32,7 +32,7 @@
                 <groupTable id="table"
                             width="100%"
                             dataContainer="prodottoesDc"
-                            presentations="true">
+                            presentations="true" aggregatable="true">
                     <actions>
                         <action id="create" type="create"/>
                         <action id="edit" type="edit"/>
@@ -44,7 +44,9 @@
                         <column id="codice"/>
                         <column id="descrizione"/>
                         <column id="tipoApprovigamento"/>
-                        <column id="importo"/>
+                        <column id="importo">
+                            <aggregation type="SUM"/>
+                        </column>
                         <column id="profilo"/>
                         <column id="latoX"/>
                         <column id="latoY"/>
@@ -58,8 +60,17 @@
                         <button id="editBtn" action="table.edit"/>
                         <button id="removeBtn" action="table.remove"/>
                         <button id="excelBtn" action="table.excel"/>
+                        <label/>
+                        <hbox align="BOTTOM_RIGHT">
                         <button id="scriptBtn" action="table.script"/>
+                        <button id="cmd1Btn" align="TOP_RIGHT" icon="CALENDAR_CHECK_O"/>
+                        <button id="cmd2Btn" icon="ID_CARD_O"/>
+                        <button id="cmd3Btn" icon="EDIT_ACTION"/>
+
+                        <label id="labelInfo" value="-Area toolbar del contesto-" align="MIDDLE_CENTER" stylename="bold"/>
+                        </hbox>
                     </buttonsPanel>
+
                 </groupTable>
                 <hbox id="lookupActions" spacing="true" visible="false">
                     <button action="lookupSelectAction"/>

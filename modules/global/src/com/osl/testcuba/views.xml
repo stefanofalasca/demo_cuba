@@ -13,11 +13,14 @@
     <view entity="testcuba_Prodotto" name="prodotto-view_1" extends="_local">
         <property name="magazzinoDef" view="_minimal"/>
     </view>
-    <view entity="testcuba_OrdineT" name="ordineT-view" extends="_local">
-        <property name="dettagli" view="ordineD-view"/>
-        <property name="cliente" view="_minimal"/>
-    </view>
     <view entity="testcuba_OrdineD" name="ordineD-view" extends="_local">
         <property name="prodotto" view="_minimal"/>
+    </view>
+    <view entity="testcuba_OrdineT" name="ordineT-view" extends="_local">
+        <property name="cliente" view="_minimal"/>
+        <property name="dettagli" view="_minimal">
+            <property name="prezzo"/>
+            <property name="quantita"/>
+        </property>
     </view>
 </views>

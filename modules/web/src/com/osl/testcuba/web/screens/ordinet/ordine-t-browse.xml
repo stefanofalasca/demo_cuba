@@ -32,6 +32,7 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <column id="id"/>
                 <column id="numero"/>
                 <column id="anno"/>
                 <column id="cliente"/>
@@ -42,6 +43,7 @@
                 <button id="createBtn" action="ordineTsTable.create"/>
                 <button id="editBtn" action="ordineTsTable.edit"/>
                 <button id="removeBtn" action="ordineTsTable.remove"/>
+                <button id="reportButton" icon="PRINT"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
