@@ -1,5 +1,6 @@
 package com.osl.testcuba.web.screens;
 
+import com.haulmont.cuba.gui.Screens;
 import com.haulmont.cuba.gui.components.SizeUnit;
 import com.haulmont.cuba.gui.components.SplitPanel;
 import com.haulmont.cuba.gui.components.Window;
@@ -28,6 +29,8 @@ public class ExtMainScreen extends MainScreen implements Window.HasFoldersPane {
     private AppWorkArea workArea;
     @Inject
     private WebConfig webConfig;
+    @Inject
+    private Screens screens;
 
     public ExtMainScreen() {
         addInitListener(this::initLayout);
@@ -59,5 +62,11 @@ public class ExtMainScreen extends MainScreen implements Window.HasFoldersPane {
     @Override
     public FoldersPane getFoldersPane() {
         return foldersPane;
+    }
+
+    public void onHelpBtnClick() {
+        HelpScreen helpScreen = screens.create(HelpScreen.class);
+        screens.show(helpScreen);
+
     }
 }

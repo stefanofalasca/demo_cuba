@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.osl.testcuba.web.screens">
+    <dialogMode width="800" height="600"/>
+    <layout>
+        <embedded width="100%" height="100%" relativeSrc="http://173.249.19.170:8080/HelpStudio/default.html"/>
+    </layout>
+</window>

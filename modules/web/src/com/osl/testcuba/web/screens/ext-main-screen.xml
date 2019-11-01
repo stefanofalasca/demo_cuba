@@ -23,6 +23,8 @@
                 <button width="24px" icon="BANDCAMP"  stylename="borderless-colored" align="TOP_LEFT"/>
             </hbox>
             <label id="space"/>
+            <button id="helpBtn" caption="HELP" icon="QUESTION_CIRCLE_O" stylename="borderless-colored" align="TOP_LEFT"
+                    invoke="onHelpBtnClick"/>
 
 
 

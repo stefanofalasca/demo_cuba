@@ -60,9 +60,11 @@
                         <button id="editBtn" action="table.edit"/>
                         <button id="removeBtn" action="table.remove"/>
                         <button id="excelBtn" action="table.excel"/>
+                        <button id="editScriptColsBtn"
+                                icon="font-icon:COLUMNS"
+                                action="table.editCustomColumnsAction"/>
                         <label/>
                         <hbox align="BOTTOM_RIGHT">
-                        <button id="scriptBtn" action="table.script"/>
                         <button id="cmd1Btn" align="TOP_RIGHT" icon="CALENDAR_CHECK_O"/>
                         <button id="cmd2Btn" icon="ID_CARD_O"/>
                         <button id="cmd3Btn" icon="EDIT_ACTION"/>
@@ -111,13 +113,13 @@
                         <label id="labelCommento" value="Tab reativo cambio layout da 0-900px" stylename="h1" align="MIDDLE_CENTER"/>
                         <cssLayout responsive="true" stylename="responsive-container" width="100%">
                             <vbox margin="true" spacing="true" stylename="group-panel">
-                                <lookupField id="profiloField" caption="Profilo" property="profilo" width="100%"
+                                <lookupField id="profiloField" dataContainer="prodottoDc" caption="Profilo" property="profilo" width="100%"
                                              contextHelpText="msg://helpEnum"/>
-                                <textField id="latoXField" caption="Lato X" property="latoX" width="100%"/>
+                                <textField id="latoXField" dataContainer="prodottoDc" caption="Lato X" property="latoX" width="100%"/>
                             </vbox>
                             <vbox margin="true" spacing="true" stylename="group-panel">
-                                <textField id="latoYField" caption="Lato Y" property="latoY" width="100%"/>
-                                <textField id="diametroField" caption="Diametro" property="diametro" width="100%"/>
+                                <textField id="latoYField"  dataContainer="prodottoDc" caption="Lato Y" property="latoY" width="100%"/>
+                                <textField id="diametroField" dataContainer="prodottoDc" caption="Diametro" property="diametro" width="100%"/>
                             </vbox>
                         </cssLayout>
                     </tab>

@@ -35,6 +35,10 @@ public class ScriptGrovyScreen extends Screen {
     @Inject
     private Notifications notifications;
 
+    /**
+     * Esegue uno script groovy hardcoded. Esegue il binding dell'oggetto datamanager e dell'entity prodotto
+     * @param event
+     */
     @Subscribe
     public void onInit(InitEvent event) {
         sourceEdit.setSuggester((source, text, cursorPosition) -> {
@@ -54,7 +58,6 @@ public class ScriptGrovyScreen extends Screen {
                 "    \n" +
                 "return sum;";
         sourceEdit.setValue(script);
-
 
     }
 

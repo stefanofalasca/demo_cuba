@@ -1,6 +1,23 @@
 @import "MyTheme-defaults";
 @import "MyTheme";
+@import "colors";
 
 .MyTheme {
   @include MyTheme;
+}
+
+.padding3-cell{
+    padding:3px;
+}
+.padding4-cell{
+    padding:4px;
+}
+.padding5-cell{
+    padding:5px;
+}
+.padding6-cell{
+    padding:6px;
+}
+.padding7-cell{
+    padding:7px;
 }

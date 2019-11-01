@@ -6,5 +6,6 @@
         <item screen="testcuba_Magazzino.browse"/>
         <item screen="testcuba_Prodotto.browse"/>
         <item screen="testcuba_OrdineT.browse"/>
+        <item screen="testcuba_HelpScreen"/>
     </menu>
 </menu-config>
