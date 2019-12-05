@@ -44,6 +44,9 @@
                 <button id="editBtn" action="ordineTsTable.edit"/>
                 <button id="removeBtn" action="ordineTsTable.remove"/>
                 <button id="reportButton" icon="PRINT"/>
+                <button id="editScriptColsBtn"
+                        icon="font-icon:COLUMNS"
+                        action="ordineTsTable.editCustomColumnsAction"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

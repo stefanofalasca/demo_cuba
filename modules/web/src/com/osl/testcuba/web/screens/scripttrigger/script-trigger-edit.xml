@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="nameField"
+        messagesPack="com.osl.testcuba.web.screens.scripttrigger">
+    <data>
+        <instance id="scriptTriggerDc"
+                  class="com.osl.testcuba.entity.ScriptTrigger"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="768"
+                width="1024"
+                modal="true"
+                forceDialog="true" resizable="true"/>
+    <layout expand="editActions" spacing="true">
+        <grid id="myGrid" spacing="true" width="100%">
+            <columns count="3"/>
+            <rows>
+                <row>
+                    <hbox spacing="true">
+                        <textField id="nameField" dataContainer="scriptTriggerDc" property="name" caption="Nome"/>
+                        <lookupField id="entityField" dataContainer="scriptTriggerDc" property="entity" caption="Entity"/>
+                        <checkBox id="enabledField" dataContainer="scriptTriggerDc" property="enabled"
+                                  caption="Abilita" align="MIDDLE_LEFT"/>
+                    </hbox>
+
+                </row>
+                <row>
+                    <vbox spacing="true" expand="groovyScriptField" height="600px" rowspan="1">
+                        <sourceCodeEditor mode="Groovy" id="groovyScriptField" property="groovyScript" dataContainer="scriptTriggerDc" rows="5" width="950"
+                                  textChangeTimeout="400" caption="Groovy Script"/>
+                    </vbox>
+                </row>
+            </rows>
+        </grid>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

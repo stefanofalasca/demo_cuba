@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="prodottoesTable"
+        messagesPack="com.osl.testcuba.web.screens.prodotto2">
+    <data readOnly="true">
+        <collection id="prodottoesDc"
+                    class="com.osl.testcuba.entity.Prodotto"
+                    view="prodotto-view">
+            <loader id="prodottoesDl">
+                <query>
+                    <![CDATA[select e from testcuba_Prodotto e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout
+            spacing="true">
+        <split id="split"
+               height="100%"
+               width="100%"
+               pos="25"
+               orientation="horizontal"
+               dockable="true"
+               dockMode="RIGHT"
+               reversePosition="true"
+               settingsEnabled="true">
+            <vbox id="lookupBox" height="100%" expand="prodottoesTable" margin="false,true,false,false"
+                  spacing="true">
+                <filter id="filter"
+                        applyTo="prodottoesTable"
+                        dataLoader="prodottoesDl">
+                    <properties include=".*"/>
+                </filter>
+                <groupTable id="prodottoesTable"
+                            width="100%"
+                            dataContainer="prodottoesDc" presentations="true">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="codice"/>
+                        <column id="unitaMisura"/>
+                        <column id="pianoConto"/>
+                        <column id="costoPrimo"/>
+                        <column id="costoStandard"/>
+                        <column id="descrizione"/>
+                        <column id="descrizione1"/>
+                        <column id="tipoApprovigamento"/>
+                        <column id="importo"/>
+                        <column id="profilo"/>
+                        <column id="latoX"/>
+                        <column id="latoY"/>
+                        <column id="diametro"/>
+                        <column id="magazzinoDef"/>
+                        <column id="fornitoreDefault"/>
+                        <column id="categoriaGestionale"/>
+                        <column id="categoriaTecnologica"/>
+                    </columns>
+                    <rowsCount/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn" action="prodottoesTable.create"/>
+                        <button id="editBtn" action="prodottoesTable.edit"/>
+                        <button id="removeBtn" action="prodottoesTable.remove"/>
+                        <button id="editCustomColumns" icon="font-icon:COLUMNS"/>
+                    </buttonsPanel>
+                </groupTable>
+                <hbox id="lookupActions" spacing="true" visible="false">
+                    <button action="lookupSelectAction"/>
+                    <button action="lookupCancelAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="previewBox" height="100%" margin="false,false,false,true" expand="previewFragment"
+                  spacing="true">
+                <fragment id="previewFragment" screen="lupreview_ItemPreviewFragment"/>
+            </vbox>
+        </split>
+    </layout>
+</window>

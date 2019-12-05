@@ -18,9 +18,20 @@ public class Comune extends StandardEntity {
     @Column(name = "NOME", nullable = false)
     protected String nome;
 
+    @Column(name = "CAP", length = 10)
+    protected String cap;
+
     @NotNull
     @Column(name = "PROVINCIA", nullable = false, length = 2)
     protected String provincia;
+
+    public String getCap() {
+        return cap;
+    }
+
+    public void setCap(String cap) {
+        this.cap = cap;
+    }
 
     public String getProvincia() {
         return provincia;

@@ -1,11 +1,13 @@
 
 buildscript {
-    ext.cubaVersion = '7.1.1'
+    ext.cubaVersion = '7.1.2'
     repositories {
         mavenLocal()
         maven {
             url 'https://dl.bintray.com/cuba-platform/main'
-            
+        }
+        maven{
+            url 'https://dl.bintray.com/pfurini/cuba-components'
         }
         jcenter()
 
@@ -44,9 +46,14 @@ dependencies {
     appComponent('de.diedavids.cuba.attachable:attachable-global:0.7.0')
     appComponent("com.haulmont.reports:reports-global:$cubaVersion")
     appComponent("com.osl.customcolumns:custcol-global:0.1-SNAPSHOT")
+    appComponent('it.nexbit.cuba.dynamicattributesext:dynattrext-global:1.0.0')
+    appComponent('com.osl.commonservices:comserv-global:0.1-SNAPSHOT')
+    appComponent('de.diedavids.cuba.dataimport:dataimport-global:0.11.0')
+    appComponent('com.haulmont.addon.globalevents:cubaglevt-global:0.5.1')
+    appComponent('it.nexbit.cuba.lookuppreview:lupreview-global:1.0')
 }
 
-def postgres = 'org.postgresql:postgresql:42.2.5'
+def mssql = 'com.microsoft.sqlserver:mssql-jdbc:7.2.1.jre8'
 
 configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'java')
@@ -80,6 +87,13 @@ configure(globalModule) {
             enabled = true
         }
     }
+
+    jar {
+        manifest {
+            attributes('App-Component-Id': cuba.artifact.group)
+            attributes('App-Component-Version': cuba.artifact.version + (cuba.artifact.isSnapshot ? '-SNAPSHOT' : ''))
+        }
+    }
 }
 
 configure(coreModule) {
@@ -92,8 +106,8 @@ configure(coreModule) {
     dependencies {
         compile(globalModule)
         compileOnly(servletApi)
-        jdbc(postgres)
-        testRuntime(postgres)
+        jdbc(mssql) { exclude(group: 'com.microsoft.azure', module: 'azure-keyvault') }
+        testRuntime(mssql) { exclude(group: 'com.microsoft.azure', module: 'azure-keyvault') }
     }
 
     task cleanConf(description: 'Cleans up conf directory') {
@@ -113,19 +127,21 @@ configure(coreModule) {
     }
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
-        dbms = 'postgres'
-        host = 'localhost'
+        dbms = 'mssql'
+        host = 'dev09\\sql2017'
         dbName = 'testcuba'
-        dbUser = 'postgres'
-        dbPassword = 'admin'
+        dbUser = 'sa'
+        dbPassword = ''
+        dbmsVersion = '2012'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
-        dbms = 'postgres'
-        host = 'localhost'
+        dbms = 'mssql'
+        host = 'dev09\\sql2017'
         dbName = 'testcuba'
-        dbUser = 'postgres'
-        dbPassword = 'admin'
+        dbUser = 'sa'
+        dbPassword = ''
+        dbmsVersion = '2012'
     }
 }
 

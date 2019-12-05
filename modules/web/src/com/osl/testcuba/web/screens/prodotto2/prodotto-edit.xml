@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.osl.testcuba.web.screens.prodotto2">
+    <data>
+        <instance id="prodottoDc"
+                  class="com.osl.testcuba.entity.Prodotto"
+                  view="prodotto-view">
+            <loader/>
+        </instance>
+    </data>
+
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <label id="labelWarning" stylename="h2 bkcolor_Coral bold" icon="HAND_STOP_O" visible="false"/>
+            <form id="form" dataContainer="prodottoDc">
+                <column width="250px">
+                    <textField id="codiceField" property="codice"/>
+                    <pickerField id="unitaMisuraField" property="unitaMisura">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="pianoContoField" property="pianoConto">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="costoPrimoField" property="costoPrimo"/>
+                    <textField id="costoStandardField" property="costoStandard"/>
+                    <textField id="descrizioneField" property="descrizione"/>
+                    <textField id="descrizione1Field" property="descrizione1"/>
+                    <lookupField id="tipoApprovigamentoField" property="tipoApprovigamento"/>
+                    <textField id="importoField" property="importo"/>
+                    <lookupField id="profiloField" property="profilo"/>
+                    <textField id="latoXField" property="latoX"/>
+                    <textField id="latoYField" property="latoY"/>
+                    <textField id="diametroField" property="diametro"/>
+                    <pickerField id="magazzinoDefField" property="magazzinoDef">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="fornitoreDefaultField" property="fornitoreDefault">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="categoriaGestionaleField" property="categoriaGestionale">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="categoriaTecnologicaField" property="categoriaTecnologica">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

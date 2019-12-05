@@ -17,7 +17,8 @@
     <context-param>
         <param-name>appComponents</param-name>
         <param-value>com.haulmont.cuba it.nexbit.cuba.translationit com.haulmont.fts de.diedavids.cuba.attachable
-            com.haulmont.reports com.osl.customcolumns</param-value>
+            com.haulmont.reports com.osl.customcolumns com.osl.commonservices it.nexbit.cuba.dynamicattributesext
+            de.diedavids.cuba.dataimport com.haulmont.addon.globalevents it.nexbit.cuba.lookuppreview</param-value>
     </context-param>
     <listener>
         <listener-class>com.vaadin.server.communication.JSR356WebsocketInitializer</listener-class>

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-testcuba" insertBefore="administration">
-        <item screen="testcuba_Comune.browse"/>
-        <item screen="testcuba_Cliente.browse"/>
-        <item screen="testcuba_Magazzino.browse"/>
+        <menu id="anagrafiche">
+            <item screen="testcuba_Comune.browse"/>
+            <item screen="testcuba_Cliente.browse"/>
+            <item screen="testcuba_Fornitore.browse"/>
+            <item screen="testcuba_CategoriaGestionale.browse"/>
+            <item screen="testcuba_CategoriaTecnologica.browse"/>
+            <item screen="testcuba_UnitaMisura.browse"/>
+            <item screen="testcuba_PianoConto.browse"/>
+            <item screen="testcuba_Magazzino.browse"/>
+        </menu>
         <item screen="testcuba_Prodotto.browse"/>
+        <item screen="testcuba_Prodotto2.browse"/>
         <item screen="testcuba_OrdineT.browse"/>
-        <item screen="testcuba_HelpScreen"/>
+        <item screen="testcuba_ScriptTrigger.browse"/>
+        <item screen="testcuba_MovMag.browse"/>
     </menu>
+    <item screen="testcuba_HelpScreen" insertBefore="administration"/>
 </menu-config>

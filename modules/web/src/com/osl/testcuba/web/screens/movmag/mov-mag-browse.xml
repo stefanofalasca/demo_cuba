@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="movMagsTable"
+        messagesPack="com.osl.testcuba.web.screens.movmag">
+    <data readOnly="true">
+        <collection id="movMagsDc"
+                    class="com.osl.testcuba.entity.MovMag"
+                    view="movMag-view">
+            <loader id="movMagsDl">
+                <query>
+                    <![CDATA[select e from testcuba_MovMag e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="movMagsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="movMagsTable"
+                dataLoader="movMagsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="movMagsTable"
+                    width="100%"
+                    dataContainer="movMagsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="prodotto"/>
+                <column id="quantita"/>
+                <column id="entrataUscita"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="movMagsTable.create"/>
+                <button id="editBtn" action="movMagsTable.edit"/>
+                <button id="removeBtn" action="movMagsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

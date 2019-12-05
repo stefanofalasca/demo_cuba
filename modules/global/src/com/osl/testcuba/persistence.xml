@@ -8,5 +8,12 @@
         <class>com.osl.testcuba.entity.Magazzino</class>
         <class>com.osl.testcuba.entity.OrdineT</class>
         <class>com.osl.testcuba.entity.OrdineD</class>
+        <class>com.osl.testcuba.entity.Fornitore</class>
+        <class>com.osl.testcuba.entity.CategoriaGestionale</class>
+        <class>com.osl.testcuba.entity.CategoriaTecnologica</class>
+        <class>com.osl.testcuba.entity.UnitaMisura</class>
+        <class>com.osl.testcuba.entity.PianoConto</class>
+        <class>com.osl.testcuba.entity.ScriptTrigger</class>
+        <class>com.osl.testcuba.entity.MovMag</class>
     </persistence-unit>
 </persistence>

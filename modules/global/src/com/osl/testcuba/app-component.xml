@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="it.nexbit.cuba.lookuppreview, com.haulmont.reports, com.haulmont.addon.globalevents, it.nexbit.cuba.translationit, com.haulmont.cuba, com.haulmont.fts, it.nexbit.cuba.dynamicattributesext, de.diedavids.cuba.attachable, com.osl.customcolumns, de.diedavids.cuba.dataimport, com.osl.commonservices">
+
+    <module name="global" blocks="*">
+        <artifact name="testcuba-global" appJar="true"/>
+
+        <property name="cuba.persistenceConfig" value="+com/osl/testcuba/persistence.xml"/>
+        <property name="cuba.metadataConfig" value="+com/osl/testcuba/metadata.xml"/>
+        <property name="cuba.viewsConfig" value="+com/osl/testcuba/views.xml"/>
+    </module>
+    <module name="core" dependsOn="global" blocks="core">
+        <artifact name="testcuba-core" appJar="true"/>
+        <artifact name="testcuba-core" classifier="db" ext="zip" configuration="dbscripts"/>
+
+        <property name="cuba.springContextConfig" value="+com/osl/testcuba/spring.xml"/>
+        <property name="cuba.ftsConfig" value="+com/osl/testcuba/fts.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.osl.testcuba.core"/>
+    </module>
+    <module name="web" dependsOn="global" blocks="web">
+        <artifact name="testcuba-web" appJar="true"/>
+        <artifact name="testcuba-web" classifier="web" ext="zip" configuration="webcontent"/>
+
+        <property name="cuba.springContextConfig" value="+com/osl/testcuba/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig" value="+com/osl/testcuba/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig" value="+com/osl/testcuba/web-screens.xml"/>
+        <property name="cuba.menuConfig" value="+com/osl/testcuba/web-menu.xml"/>
+        <property name="cuba.permissionConfig" value="+com/osl/testcuba/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.osl.testcuba.web"/>
+    </module>
+</app-component>

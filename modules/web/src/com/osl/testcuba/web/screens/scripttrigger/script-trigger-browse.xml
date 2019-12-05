@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="scriptTriggersTable"
+        messagesPack="com.osl.testcuba.web.screens.scripttrigger">
+    <data readOnly="true">
+        <collection id="scriptTriggersDc"
+                    class="com.osl.testcuba.entity.ScriptTrigger"
+                    view="_local">
+            <loader id="scriptTriggersDl">
+                <query>
+                    <![CDATA[select e from testcuba_ScriptTrigger e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scriptTriggersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="scriptTriggersTable"
+                dataLoader="scriptTriggersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="scriptTriggersTable"
+                    width="100%"
+                    dataContainer="scriptTriggersDc" presentations="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="entity"/>
+                <column id="enabled"/>
+                <column id="groovyScript"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="scriptTriggersTable.create"/>
+                <button id="editBtn" action="scriptTriggersTable.edit"/>
+                <button id="removeBtn" action="scriptTriggersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

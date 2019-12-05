@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.osl.testcuba.web.screens.unitamisura">
+    <data>
+        <instance id="unitaMisuraDc"
+                  class="com.osl.testcuba.entity.UnitaMisura"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="unitaMisuraDc">
+            <column width="250px">
+                <textField id="codiceField" property="codice"/>
+                <textField id="descrizioneField" property="descrizione"/>
+                <checkBox id="fattoreConversioneKgmField" property="fattoreConversioneKgm"/>
+                <checkBox id="utilizzaPerCalcoloPesiField" property="utilizzaPerCalcoloPesi"/>
+                <checkBox id="metriLineariField" property="metriLineari"/>
+                <checkBox id="quantitaDiscretaField" property="quantitaDiscreta"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.osl.testcuba.web.screens.movmag">
+    <data>
+        <instance id="movMagDc"
+                  class="com.osl.testcuba.entity.MovMag"
+                  view="movMag-view">
+            <loader/>
+        </instance>
+        <collection id="prodottoesDc" class="com.osl.testcuba.entity.Prodotto">
+            <loader id="prodottoesDl">
+                <query>
+                    <![CDATA[select e from testcuba_Prodotto e ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="movMagDc">
+            <column width="250px">
+                <textField id="quantitaField" property="quantita"/>
+                <lookupField id="entrataUscitaField" property="entrataUscita"/>
+                <suggestionPickerField id="prodottoField" property="prodotto" minSearchStringLength="3">
+                    <query entityClass="com.osl.testcuba.entity.Prodotto" view="_local"
+                           searchStringFormat="%$searchString%" escapeValueForLike="true"><![CDATA[select e from testcuba_Prodotto e
+where e.codice like :searchString escape '\']]></query>
+                </suggestionPickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

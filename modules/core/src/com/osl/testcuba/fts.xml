@@ -19,5 +19,26 @@
         <entity class="com.osl.testcuba.entity.OrdineD">
             <include re=".*"/>
         </entity>
+        <entity class="com.osl.testcuba.entity.Fornitore">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.CategoriaGestionale">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.CategoriaTecnologica">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.UnitaMisura">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.PianoConto">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.ScriptTrigger">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.osl.testcuba.entity.MovMag">
+            <include re=".*"/>
+        </entity>
     </entities>
 </fts-config>

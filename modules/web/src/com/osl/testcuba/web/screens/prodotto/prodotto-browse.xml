@@ -1,4 +1,5 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
         caption="msg://browseCaption"
         focusComponent="table"
         messagesPack="com.osl.testcuba.web.screens.prodotto">
@@ -9,6 +10,13 @@
             <loader id="prodottoesDl">
                 <query>
                     <![CDATA[select e from testcuba_Prodotto e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where>e.id in :items</c:where>
+                            </c:jpql>
+                        </and>
+                    </condition>
                 </query>
             </loader>
         </collection>
@@ -16,6 +24,7 @@
                   class="com.osl.testcuba.entity.Prodotto"
                   view="prodotto-view_1">
             <loader/>
+            <collection id="ordiniCollection" property="ordini"/>
         </instance>
     </data>
     <actions>
@@ -32,17 +41,17 @@
                 <groupTable id="table"
                             width="100%"
                             dataContainer="prodottoesDc"
-                            presentations="true" aggregatable="true">
+                            aggregatable="true" presentations="true">
                     <actions>
                         <action id="create" type="create"/>
                         <action id="edit" type="edit"/>
                         <action id="remove" type="remove"/>
                         <action id="excel" type="excel"/>
-                        <action id="script" caption="Script" icon="font-icon:ALIGN_LEFT" trackSelection="true"/>
                     </actions>
                     <columns>
                         <column id="codice"/>
                         <column id="descrizione"/>
+                        <column id="descrizione1"/>
                         <column id="tipoApprovigamento"/>
                         <column id="importo">
                             <aggregation type="SUM"/>
@@ -52,6 +61,13 @@
                         <column id="latoY"/>
                         <column id="diametro"/>
                         <column id="magazzinoDef"/>
+                        <column id="fornitoreDefault"/>
+                        <column id="categoriaGestionale"/>
+                        <column id="categoriaTecnologica"/>
+                        <column id="unitaMisura"/>
+                        <column id="pianoConto"/>
+                        <column id="costoPrimo"/>
+                        <column id="costoStandard"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -60,17 +76,11 @@
                         <button id="editBtn" action="table.edit"/>
                         <button id="removeBtn" action="table.remove"/>
                         <button id="excelBtn" action="table.excel"/>
-                        <button id="editScriptColsBtn"
-                                icon="font-icon:COLUMNS"
-                                action="table.editCustomColumnsAction"/>
-                        <label/>
-                        <hbox align="BOTTOM_RIGHT">
-                        <button id="cmd1Btn" align="TOP_RIGHT" icon="CALENDAR_CHECK_O"/>
-                        <button id="cmd2Btn" icon="ID_CARD_O"/>
-                        <button id="cmd3Btn" icon="EDIT_ACTION"/>
-
-                        <label id="labelInfo" value="-Area toolbar del contesto-" align="MIDDLE_CENTER" stylename="bold"/>
-                        </hbox>
+                        <button id="editCustomColumns" icon="font-icon:COLUMNS" action="table.editCustomColumnsAction"/>
+                        <button id="appendWhereCmd" caption="msg://appendWhere" align="TOP_RIGHT" invoke="onAppendWhereCmdClick"/>
+                        <button id="deleteAllCmd" caption="Cancella tutto" icon="font-icon:REMOVE"
+                                invoke="onDeleteAllCmdClick"/>
+                        <button id="importBtn" caption="Importa" icon="DATABASE" invoke="onImportBtnClick"/>
                     </buttonsPanel>
 
                 </groupTable>
@@ -80,31 +90,40 @@
                 </hbox>
             </vbox>
             <vbox id="editBox" height="100%" margin="false,false,false,true" expand="tabSheetDati" spacing="true">
-                <tabSheet id="tabSheetDati" stylename="framed">
+                <tabSheet id="tabSheetDati" stylename="framed" height="100%">
                     <tab id="tabGenerale" caption="Generale" margin="true">
 
-                        <scrollBox id="scroll1" orientation="horizontal" contentMinWidth="800px" contentWidth="100%" width="100%"
+                        <scrollBox id="scroll1" orientation="horizontal" contentMinWidth="500px" contentWidth="100%" width="100%"
                                    scrollBars="horizontal" margin="true">
                             <vbox>
                                 <label id="labelDescTabGen" value="msg://labelGenerale" stylename="h1" align="MIDDLE_CENTER"/>
                                 <label/>
-                                <form id="form" dataContainer="prodottoDc" width="100%">
+                                <form id="form" dataContainer="prodottoDc" width="100%" height="Auto">
 
                                     <column width="20%">
                                         <textField id="codiceField" property="codice" width="100%"/>
                                         <textField id="descrizioneField" property="descrizione" width="100%"/>
                                         <lookupField id="tipoApprovigamentoField" property="tipoApprovigamento" width="100%" contextHelpText="msg://helpEnum"/>
+                                        <pickerField id="categoriaTecnologicaField" property="categoriaTecnologica" width="100%"/>
+                                        <pickerField id="unitaMisuraField" property="unitaMisura" width="100%"/>
+                                        <textField id="costoStandardField" property="costoStandard" width="100%"/>
                                     </column>
                                     <column width="80%">
                                         <textField id="importoField" property="importo" width="100%"/>
+                                        <textField id="descrizione1Field" property="descrizione1"/>
                                         <pickerField id="magazzinoDefField" description="Magazzino Default" property="magazzinoDef" width="100%">
                                             <actions>
                                                 <action id="lookup" type="picker_lookup"/>
                                                 <action id="clear" type="picker_clear"/>
                                             </actions>
                                         </pickerField>
+                                        <pickerField id="fornitoreDefaultField" property="fornitoreDefault" width="100%"/>
+                                        <pickerField id="categoriaGestionaleField" property="categoriaGestionale" width="100%"/>
+                                        <pickerField id="pianoContoField" property="pianoConto" width="100%"/>
+                                        <textField id="costoPrimoField" property="costoPrimo" width="100%"/>
                                     </column>
                                 </form>
+                                <label/>
                             </vbox>
 
                         </scrollBox>
@@ -118,13 +137,19 @@
                                 <textField id="latoXField" dataContainer="prodottoDc" caption="Lato X" property="latoX" width="100%"/>
                             </vbox>
                             <vbox margin="true" spacing="true" stylename="group-panel">
-                                <textField id="latoYField"  dataContainer="prodottoDc" caption="Lato Y" property="latoY" width="100%"/>
+                                <textField id="latoYField"  dataContainer="prodottoDc" caption="msg://com.osl.testcuba.entity/Prodotto.latoY" property="latoY" width="100%"/>
                                 <textField id="diametroField" dataContainer="prodottoDc" caption="Diametro" property="diametro" width="100%"/>
                             </vbox>
                         </cssLayout>
                     </tab>
                     <tab id="tabOrdini" caption="Ordini">
 
+                        <table height="100px" width="100%" dataContainer="ordiniCollection">
+                            <columns>
+                                <column id="prezzo"/>
+                                <column id="quantita"/>
+                            </columns>
+                        </table>
                     </tab>
 
                 </tabSheet>

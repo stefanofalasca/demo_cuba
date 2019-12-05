@@ -22,6 +22,28 @@ public class Magazzino extends StandardEntity {
     @Column(name = "DESCRIZIONE", nullable = false)
     protected String descrizione;
 
+    @Column(name = "FISCALE")
+    protected Boolean fiscale;
+
+    @Column(name = "ESCLUDI_DISPONIBILITA")
+    protected Boolean escludiDisponibilita;
+
+    public Boolean getEscludiDisponibilita() {
+        return escludiDisponibilita;
+    }
+
+    public void setEscludiDisponibilita(Boolean escludiDisponibilita) {
+        this.escludiDisponibilita = escludiDisponibilita;
+    }
+
+    public Boolean getFiscale() {
+        return fiscale;
+    }
+
+    public void setFiscale(Boolean fiscale) {
+        this.fiscale = fiscale;
+    }
+
     public String getDescrizione() {
         return descrizione;
     }

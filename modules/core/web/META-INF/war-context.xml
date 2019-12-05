@@ -1,7 +1,7 @@
 <Context>
 
     <!-- Database connection -->
-    <Resource
+    <!--<Resource
       name="jdbc/CubaDS"
       type="javax.sql.DataSource"
       maxTotal="20"
@@ -10,7 +10,18 @@
       driverClassName="org.postgresql.Driver"
       url="jdbc:postgresql://localhost/testcuba"
       username="postgres"
-      password=""/>
+      password=""/>-->
+
+    <Resource driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+              maxIdle="2"
+              maxTotal="20"
+              maxWaitMillis="5000"
+              name="jdbc/CubaDS"
+              password="Tw1nbo"
+              type="javax.sql.DataSource"
+              url="jdbc:sqlserver://localhost\sql2017;databaseName=testcuba"
+              username="sa"/>
+
 
     <!-- Switch off session serialization -->
     <Manager pathname=""/>

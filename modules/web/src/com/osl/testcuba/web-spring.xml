@@ -12,6 +12,8 @@
         <property name="remoteServices">
             <map>
                 <entry key="testcuba_DemoService" value="com.osl.testcuba.service.DemoService"/>
+                <entry key="testcuba_SqlBridgeService" value="com.osl.testcuba.service.SqlBridgeService"/>
+                <entry key="testcuba_MagazzinoService" value="com.osl.testcuba.service.MagazzinoService"/>
             </map>
         </property>
     </bean>

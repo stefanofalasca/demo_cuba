@@ -8,10 +8,24 @@
         <property name="comune" view="_minimal"/>
     </view>
     <view entity="testcuba_Prodotto" name="prodotto-view" extends="_local">
+        <property name="unitaMisura" view="_minimal"/>
+        <property name="pianoConto" view="_minimal"/>
         <property name="magazzinoDef" view="_minimal"/>
+        <property name="fornitoreDefault" view="_minimal"/>
+        <property name="categoriaGestionale" view="_minimal"/>
+        <property name="categoriaTecnologica" view="_minimal"/>
     </view>
     <view entity="testcuba_Prodotto" name="prodotto-view_1" extends="_local">
+        <property name="unitaMisura" view="_minimal"/>
+        <property name="pianoConto" view="_minimal"/>
         <property name="magazzinoDef" view="_minimal"/>
+        <property name="ordini" view="_minimal">
+            <property name="prezzo"/>
+            <property name="quantita"/>
+        </property>
+        <property name="fornitoreDefault" view="_minimal"/>
+        <property name="categoriaGestionale" view="_minimal"/>
+        <property name="categoriaTecnologica" view="_minimal"/>
     </view>
     <view entity="testcuba_OrdineD" name="ordineD-view" extends="_local">
         <property name="prodotto" view="_minimal"/>
@@ -22,5 +36,20 @@
             <property name="prezzo"/>
             <property name="quantita"/>
         </property>
+    </view>
+    <view entity="testcuba_Fornitore" name="fornitore-view" extends="_local">
+        <property name="comune" view="_minimal"/>
+    </view>
+    <view entity="testcuba_MovMag" name="movMag-view" extends="_local">
+        <property name="prodotto" view="_minimal"/>
+    </view>
+    <view entity="testcuba_Prodotto" name="preview" extends="_local">
+        <property name="unitaMisura" view="_minimal"/>
+        <property name="pianoConto" view="_minimal"/>
+        <property name="magazzinoDef" view="_minimal"/>
+        <property name="ordini" view="_minimal"/>
+        <property name="fornitoreDefault" view="_minimal"/>
+        <property name="categoriaGestionale" view="_minimal"/>
+        <property name="categoriaTecnologica" view="_minimal"/>
     </view>
 </views>

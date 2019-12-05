@@ -19,6 +19,7 @@
             <column width="250px">
                 <textField id="nomeField" property="nome"/>
                 <textField id="provinciaField" property="provincia"/>
+                <textField id="capField" property="cap"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

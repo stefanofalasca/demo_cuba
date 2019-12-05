@@ -34,6 +34,7 @@
             <columns>
                 <column id="nome"/>
                 <column id="provincia"/>
+                <column id="cap"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

@@ -17,6 +17,8 @@
             <column width="250px">
                 <textField id="codiceField" property="codice"/>
                 <textField id="descrizioneField" property="descrizione"/>
+                <checkBox id="fiscaleField" property="fiscale"/>
+                <checkBox id="escludiDisponibilitaField" property="escludiDisponibilita"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

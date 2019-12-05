@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.osl.testcuba.web.screens.fornitore">
+    <data>
+        <instance id="fornitoreDc"
+                  class="com.osl.testcuba.entity.Fornitore"
+                  view="fornitore-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="fornitoreDc">
+            <column width="250px">
+                <textField id="codiceField" property="codice"/>
+                <textField id="ragioneSocialeField" property="ragioneSociale"/>
+                <pickerField id="comuneField" property="comune">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

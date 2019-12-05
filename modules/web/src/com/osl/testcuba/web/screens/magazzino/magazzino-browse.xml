@@ -38,6 +38,8 @@
                 <column id="locazioneX"/>
                 <column id="locazioneY"/>
                 <column id="locazioneZ"/>
+                <column id="fiscale"/>
+                <column id="escludiDisponibilita"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
